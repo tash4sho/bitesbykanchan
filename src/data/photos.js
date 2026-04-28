@@ -34,7 +34,7 @@ export const photos = [
     caption: 'Pani puri assembled at the table.',
   },
   {
-    src: '/images/slideshow/placeholder-3.svg',
+    src: '/images/slideshow/butterchicken.jpg',
     alt: 'Butter chicken in a copper karahi with fresh cilantro',
     caption: 'Butter chicken, the way grandma made it.',
   },
