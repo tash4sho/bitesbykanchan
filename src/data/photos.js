@@ -24,7 +24,7 @@
 
 export const photos = [
   {
-    src: '/images/slideshow/placeholder-1.svg',
+    src: '/images/slideshow/biryani.jpg',
     alt: 'Hand-layered chicken biryani in a brass serving dish',
     caption: 'Slow-layered biryani, garnished by hand.',
   },
