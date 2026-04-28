@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="g6" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#F2EBDC"/>
+      <stop offset="100%" stop-color="#A88E6F"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g6)"/>
+  <!-- Wood-like surface texture suggestion -->
+  <g opacity="0.15">
+    <line x1="0" y1="200" x2="1200" y2="180" stroke="#5C3A1C" stroke-width="2"/>
+    <line x1="0" y1="380" x2="1200" y2="400" stroke="#5C3A1C" stroke-width="1"/>
+    <line x1="0" y1="560" x2="1200" y2="540" stroke="#5C3A1C" stroke-width="2"/>
+    <line x1="0" y1="740" x2="1200" y2="760" stroke="#5C3A1C" stroke-width="1"/>
+  </g>
+  <!-- Three bowls -->
+  <!-- Mint chutney bowl (left) -->
+  <g transform="translate(300 480)">
+    <ellipse cx="0" cy="20" rx="180" ry="40" fill="#3D2818" opacity="0.3"/>
+    <circle cx="0" cy="0" r="170" fill="#FAF6EE" stroke="#C9A961" stroke-width="4"/>
+    <circle cx="0" cy="0" r="155" fill="#6B7F4F"/>
+    <circle cx="0" cy="0" r="150" fill="#7E9359" opacity="0.7"/>
+    <!-- Cilantro flecks -->
+    <circle cx="-30" cy="-20" r="4" fill="#3D5026"/>
+    <circle cx="40" cy="10" r="4" fill="#3D5026"/>
+    <circle cx="-10" cy="40" r="4" fill="#3D5026"/>
+    <circle cx="50" cy="-30" r="3" fill="#3D5026"/>
+  </g>
+  <!-- Tamarind chutney bowl (center, slightly back) -->
+  <g transform="translate(600 380)">
+    <ellipse cx="0" cy="15" rx="150" ry="35" fill="#3D2818" opacity="0.3"/>
+    <circle cx="0" cy="0" r="140" fill="#FAF6EE" stroke="#C9A961" stroke-width="4"/>
+    <circle cx="0" cy="0" r="125" fill="#5C2818"/>
+    <ellipse cx="-15" cy="-10" rx="20" ry="6" fill="#A06A35" opacity="0.6"/>
+  </g>
+  <!-- Yogurt/raita bowl (right) -->
+  <g transform="translate(900 480)">
+    <ellipse cx="0" cy="20" rx="180" ry="40" fill="#3D2818" opacity="0.3"/>
+    <circle cx="0" cy="0" r="170" fill="#FAF6EE" stroke="#C9A961" stroke-width="4"/>
+    <circle cx="0" cy="0" r="155" fill="#F5EFE6"/>
+    <!-- Cucumber flecks -->
+    <circle cx="-25" cy="-10" r="5" fill="#6B7F4F" opacity="0.6"/>
+    <circle cx="35" cy="20" r="5" fill="#6B7F4F" opacity="0.6"/>
+    <circle cx="-5" cy="35" r="4" fill="#6B7F4F" opacity="0.6"/>
+    <circle cx="45" cy="-25" r="4" fill="#6B7F4F" opacity="0.6"/>
+    <!-- Cumin specks -->
+    <ellipse cx="0" cy="0" rx="3" ry="1" fill="#3D2818"/>
+    <ellipse cx="-40" cy="20" rx="3" ry="1" fill="#3D2818"/>
+    <ellipse cx="30" cy="-15" rx="3" ry="1" fill="#3D2818"/>
+  </g>
+  <text x="600" y="855" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="22" fill="#FAF6EE" opacity="0.7">replace with your photo</text>
+</svg>

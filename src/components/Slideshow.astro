@@ -1,0 +1,354 @@
+---
+import { photos } from '../data/photos.js';
+import Ornament from './Ornament.astro';
+
+export interface Props {
+  title?: string;
+  eyebrow?: string;
+  intro?: string;
+  /** Auto-advance interval in milliseconds. Set to 0 to disable. */
+  interval?: number;
+}
+
+const {
+  title = "From the kitchen",
+  eyebrow = "Recent gatherings",
+  intro = "A look at what's been served lately — biryanis layered, chaat assembled, chutneys made the morning of.",
+  interval = 5000,
+} = Astro.props;
+---
+<section class="slideshow-section">
+  <div class="container">
+    <header class="slideshow-section__head">
+      <span class="eyebrow">{eyebrow}</span>
+      <h2>{title}</h2>
+      {intro && <p class="lede" style="max-width: 56ch; margin-top: 1rem;">{intro}</p>}
+      <div class="divider" style="max-width: 280px; margin: 1.75rem 0 0;">
+        <Ornament type="divider" size={18} color="var(--gold)" />
+      </div>
+    </header>
+
+    <div
+      class="slideshow"
+      data-slideshow
+      data-interval={interval}
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Photos from recent gatherings"
+    >
+      <div class="slideshow__viewport" data-viewport tabindex="0">
+        <ul class="slideshow__track" data-track>
+          {photos.map((photo, i) => (
+            <li
+              class="slide"
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${i + 1} of ${photos.length}`}
+            >
+              <figure class="slide__figure">
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  width="800"
+                  height="600"
+                  loading={i < 3 ? 'eager' : 'lazy'}
+                  decoding="async"
+                />
+                {photo.caption && (
+                  <figcaption class="slide__caption">{photo.caption}</figcaption>
+                )}
+              </figure>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="slideshow__controls">
+        <button class="slideshow__btn" data-prev aria-label="Previous photo">
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M13 4 L6 10 L13 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <ol class="slideshow__dots" data-dots role="tablist" aria-label="Choose photo">
+          {photos.map((_, i) => (
+            <li>
+              <button
+                class="slideshow__dot"
+                data-dot={i}
+                role="tab"
+                aria-label={`Go to photo ${i + 1}`}
+                aria-selected={i === 0 ? 'true' : 'false'}
+              ></button>
+            </li>
+          ))}
+        </ol>
+
+        <button class="slideshow__btn" data-next aria-label="Next photo">
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M7 4 L14 10 L7 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .slideshow-section {
+    padding-block: clamp(3.5rem, 7vw, 6rem);
+  }
+
+  .slideshow-section__head {
+    margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+    max-width: 56ch;
+  }
+  .slideshow-section__head h2 { margin-top: 0.75rem; }
+
+  .slideshow {
+    position: relative;
+  }
+
+  /* Viewport — clips overflow but uses native scroll for touch */
+  .slideshow__viewport {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    /* Negative margin/padding trick gives the focus ring some breathing room */
+    margin-inline: -8px;
+    padding: 8px;
+    border-radius: var(--radius-lg);
+  }
+  .slideshow__viewport::-webkit-scrollbar { display: none; }
+  .slideshow__viewport:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  /* Track is a flex row of slides */
+  .slideshow__track {
+    --slides-visible: 3;
+    --slide-gap: 1.5rem;
+    display: flex;
+    gap: var(--slide-gap);
+  }
+
+  .slide {
+    flex: 0 0 calc((100% - (var(--slides-visible) - 1) * var(--slide-gap)) / var(--slides-visible));
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .slide__figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .slide__figure img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    background: var(--cream-deep);
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .slide:hover .slide__figure img {
+    transform: scale(1.02);
+  }
+  .slide__caption {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1rem;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  /* Controls */
+  .slideshow__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .slideshow__btn {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .slideshow__btn:hover {
+    background: var(--burgundy);
+    color: var(--cream);
+    border-color: var(--burgundy);
+  }
+  .slideshow__btn:active { transform: scale(0.95); }
+  .slideshow__btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .slideshow__dots {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .slideshow__dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border-radius: 50%;
+    background: var(--line-strong);
+    transition: background 0.2s, width 0.3s;
+  }
+  .slideshow__dot:hover { background: var(--ink-soft); }
+  .slideshow__dot[aria-selected="true"] {
+    background: var(--burgundy);
+    width: 24px;
+    border-radius: 4px;
+  }
+
+  /* Responsive: 2-up tablet, 1-up mobile */
+  @media (max-width: 900px) {
+    .slideshow__track { --slides-visible: 2; --slide-gap: 1rem; }
+  }
+  @media (max-width: 600px) {
+    .slideshow__track { --slides-visible: 1; }
+  }
+</style>
+
+<script>
+  type SlideshowEl = HTMLElement & { _cleanup?: () => void };
+
+  function initSlideshow(root: SlideshowEl) {
+    const viewport = root.querySelector<HTMLElement>('[data-viewport]');
+    const track    = root.querySelector<HTMLElement>('[data-track]');
+    const prevBtn  = root.querySelector<HTMLButtonElement>('[data-prev]');
+    const nextBtn  = root.querySelector<HTMLButtonElement>('[data-next]');
+    const dots     = root.querySelectorAll<HTMLButtonElement>('[data-dot]');
+    const slides   = track?.children;
+    if (!viewport || !track || !slides?.length) return;
+
+    const interval = parseInt(root.dataset.interval || '0', 10);
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let timer: number | null = null;
+    let isHovered = false;
+    let isFocused = false;
+    let isVisible = !document.hidden;
+    let userInteracted = false;
+
+    const slideWidth = () => (slides[0] as HTMLElement).getBoundingClientRect().width;
+    const gap = () => parseFloat(getComputedStyle(track).gap) || 0;
+    const step = () => slideWidth() + gap();
+    const maxScroll = () => viewport.scrollWidth - viewport.clientWidth;
+
+    const currentIndex = () => Math.round(viewport.scrollLeft / step());
+
+    const goTo = (index: number) => {
+      const max = slides.length - 1;
+      const clamped = ((index % slides.length) + slides.length) % slides.length;
+      const target = clamped * step();
+      viewport.scrollTo({ left: Math.min(target, maxScroll()), behavior: 'smooth' });
+    };
+
+    const next = () => {
+      const i = currentIndex();
+      // If we're at the end (or close), wrap to the start
+      if (viewport.scrollLeft >= maxScroll() - 4) {
+        viewport.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        goTo(i + 1);
+      }
+    };
+    const prev = () => {
+      const i = currentIndex();
+      if (viewport.scrollLeft <= 4) {
+        viewport.scrollTo({ left: maxScroll(), behavior: 'smooth' });
+      } else {
+        goTo(i - 1);
+      }
+    };
+
+    const updateDots = () => {
+      const i = currentIndex();
+      dots.forEach((d, di) => d.setAttribute('aria-selected', di === i ? 'true' : 'false'));
+    };
+
+    // --- Auto-advance ---
+    const shouldRun = () =>
+      interval > 0 && !reduceMotion && !isHovered && !isFocused && isVisible && !userInteracted;
+
+    const start = () => {
+      stop();
+      if (shouldRun()) timer = window.setInterval(next, interval);
+    };
+    const stop = () => {
+      if (timer) { clearInterval(timer); timer = null; }
+    };
+
+    // --- Listeners ---
+    nextBtn?.addEventListener('click', () => { userInteracted = true; next(); stop(); });
+    prevBtn?.addEventListener('click', () => { userInteracted = true; prev(); stop(); });
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        userInteracted = true;
+        const i = parseInt(dot.dataset.dot || '0', 10);
+        goTo(i);
+        stop();
+      });
+    });
+
+    // Keep dots in sync as user scrolls (touch/swipe/keyboard)
+    let scrollRaf = 0;
+    viewport.addEventListener('scroll', () => {
+      cancelAnimationFrame(scrollRaf);
+      scrollRaf = requestAnimationFrame(updateDots);
+    });
+
+    // Pause on hover
+    root.addEventListener('mouseenter', () => { isHovered = true;  stop(); });
+    root.addEventListener('mouseleave', () => { isHovered = false; start(); });
+
+    // Pause on focus inside the slideshow
+    root.addEventListener('focusin',  () => { isFocused = true;  stop(); });
+    root.addEventListener('focusout', () => { isFocused = false; start(); });
+
+    // Pause when tab is hidden
+    const onVisibility = () => {
+      isVisible = !document.hidden;
+      isVisible ? start() : stop();
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+
+    // Keyboard nav when viewport is focused
+    viewport.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); userInteracted = true; next(); stop(); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); userInteracted = true; prev(); stop(); }
+    });
+
+    // First-paint sync + kickoff
+    updateDots();
+    start();
+
+    // Cleanup hook (handy for hot-module-reload during dev)
+    root._cleanup = () => {
+      stop();
+      document.removeEventListener('visibilitychange', onVisibility);
+    };
+  }
+
+  document.querySelectorAll<SlideshowEl>('[data-slideshow]').forEach(initSlideshow);
+</script>

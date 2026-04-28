@@ -1,0 +1,135 @@
+---
+export interface MenuItem {
+  name: string;
+  detail?: string;
+  half: string;
+  full: string;
+  halfLabel?: string;
+  fullLabel?: string;
+}
+export interface Props {
+  title: string;
+  note?: string;
+  items: MenuItem[];
+}
+const { title, note, items } = Astro.props;
+const showHeaderRow = items.some(i => i.half || i.full);
+---
+<article class="cat">
+  <header class="cat__head">
+    <h3 class="cat__title">{title}</h3>
+    {note && <p class="cat__note">{note}</p>}
+  </header>
+
+  {showHeaderRow && (
+    <div class="cat__row cat__row--head" aria-hidden="true">
+      <span></span>
+      <span>Half</span>
+      <span>Full</span>
+    </div>
+  )}
+
+  <ul class="cat__list">
+    {items.map(item => (
+      <li class="cat__row">
+        <div class="cat__name">
+          <span>{item.name}</span>
+          {item.detail && <em class="cat__detail">{item.detail}</em>}
+        </div>
+        <div class="cat__price">
+          {item.halfLabel && <span class="cat__price-label">{item.halfLabel}</span>}
+          {item.half}
+        </div>
+        <div class="cat__price">
+          {item.fullLabel && <span class="cat__price-label">{item.fullLabel}</span>}
+          {item.full}
+        </div>
+      </li>
+    ))}
+  </ul>
+</article>
+
+<style>
+  .cat {
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .cat:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(44, 24, 16, 0.06);
+  }
+
+  .cat__head { margin-bottom: 1.25rem; }
+  .cat__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2vw, 1.75rem);
+    font-weight: 500;
+    color: var(--burgundy);
+    margin-bottom: 0.25rem;
+  }
+  .cat__note {
+    font-style: italic;
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+
+  .cat__row {
+    display: grid;
+    grid-template-columns: 1fr 80px 80px;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px dotted var(--line-strong);
+    align-items: baseline;
+  }
+  .cat__row--head {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding-block: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .cat__row--head span:nth-child(2),
+  .cat__row--head span:nth-child(3) { text-align: right; }
+
+  .cat__list .cat__row:last-child { border-bottom: 0; }
+
+  .cat__name {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    color: var(--ink);
+    font-size: 1rem;
+  }
+  .cat__detail {
+    font-size: 0.82rem;
+    font-style: italic;
+    font-family: var(--font-display);
+    color: var(--ink-soft);
+    font-weight: 300;
+  }
+  .cat__price {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+  .cat__price-label {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+
+  @media (max-width: 480px) {
+    .cat__row { grid-template-columns: 1fr 60px 60px; gap: 0.5rem; }
+    .cat__price { font-size: 0.9rem; }
+  }
+</style>

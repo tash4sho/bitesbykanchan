@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Slideshow from '../components/Slideshow.astro';
+import MenuCategory from '../components/MenuCategory.astro';
+import Ornament from '../components/Ornament.astro';
+import { menu, featuredSlugs } from '../data/menu.js';
+
+const featured = menu.filter(c => featuredSlugs.includes(c.slug));
+---
+<BaseLayout title="Home">
+
+  <Hero />
+
+  <!-- Trust / value strip -->
+  <section class="bg-deep tight">
+    <div class="container values">
+      <div class="value">
+        <Ornament type="leaf" size={28} color="var(--burgundy)" />
+        <h4>Slow-cooked, never shortcut</h4>
+        <p>Whole spices, marinated proteins, biryanis layered the way they're meant to be.</p>
+      </div>
+      <div class="value">
+        <Ornament type="spice" size={28} color="var(--burgundy)" />
+        <h4>Curated for your group</h4>
+        <p>Half and full trays calibrated for 10–12 or 18–20 guests so you don't over-order.</p>
+      </div>
+      <div class="value">
+        <Ornament type="chili" size={28} color="var(--burgundy)" />
+        <h4>From my kitchen, with care</h4>
+        <p>Every order is personal — recipes passed down, dishes sent out the way I'd serve family.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo slideshow -->
+  <Slideshow />
+
+  <!-- Featured menu -->
+  <section>
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow">A taste of the menu</span>
+        <h2>What's on the table</h2>
+        <div class="divider" style="max-width: 360px; margin-top: 1.25rem;">
+          <Ornament type="divider" size={20} color="var(--gold)" />
+        </div>
+      </header>
+
+      <div class="featured-grid">
+        {featured.map(cat => (
+          <MenuCategory title={cat.title} note={cat.note} items={cat.items.slice(0, 5)} />
+        ))}
+      </div>
+
+      <div class="section-foot">
+        <a href="/menu" class="btn btn--ghost">See the full menu →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About teaser -->
+  <section class="bg-warm">
+    <div class="container about-teaser">
+      <div class="about-teaser__copy">
+        <span class="eyebrow">The story</span>
+        <h2>Cooking the way<br/>my mother taught me.</h2>
+        <p class="lede">
+          Bites by Kanchan started in a Queens kitchen with one rule —
+          serve people food they'd remember. Today we cater across the city for
+          birthdays, weddings, holidays, and quiet Sundays.
+        </p>
+        <a href="/about" class="btn btn--ghost">Read the story →</a>
+      </div>
+      <figure class="about-teaser__quote">
+        <blockquote>
+          "It's the kind of meal you don't forget — the biryani had layers,
+          the goat actually tasted slow-cooked, and the chutneys were the star."
+        </blockquote>
+        <figcaption>— Anjali R., Brooklyn</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="bg-burgundy">
+    <div class="container container--sm cta-band">
+      <span class="eyebrow">Booking now</span>
+      <h2>Hosting something soon?</h2>
+      <p class="lede">
+        Tell me a little about it. I'll send back a menu suggestion and a quote within a day.
+      </p>
+      <div class="cta-band__actions">
+        <a href="/contact" class="btn btn--gold">Plan your event</a>
+        <a href="tel:+13477284030" class="btn btn--ghost">Call 347-728-4030</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .values {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+  .value h4 { margin-block: 1rem 0.5rem; color: var(--ink); }
+  .value p { font-size: 0.95rem; }
+
+  .section-head { text-align: center; margin-bottom: 3rem; }
+  .section-head .divider { margin-inline: auto; }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .section-foot { text-align: center; margin-top: 3rem; }
+
+  .about-teaser {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+  }
+  .about-teaser__copy h2 { margin: 1rem 0 1.25rem; }
+  .about-teaser__copy .btn { margin-top: 1.5rem; }
+
+  .about-teaser__quote {
+    position: relative;
+    padding: 2.5rem;
+    background: var(--cream);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--gold);
+  }
+  .about-teaser__quote blockquote {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .about-teaser__quote figcaption {
+    margin-top: 1.25rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+  }
+
+  .cta-band { text-align: center; }
+  .cta-band h2 { margin: 1rem 0 1.5rem; color: var(--cream); }
+  .cta-band__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 860px) {
+    .values { grid-template-columns: 1fr; gap: 2rem; }
+    .featured-grid { grid-template-columns: 1fr; }
+    .about-teaser { grid-template-columns: 1fr; }
+  }
+</style>

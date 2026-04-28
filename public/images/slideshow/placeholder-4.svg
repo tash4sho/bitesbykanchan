@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="g4" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#EFE6D2"/>
+      <stop offset="100%" stop-color="#8C6F4F"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g4)"/>
+  <!-- Large thali plate -->
+  <circle cx="600" cy="500" r="380" fill="#FAF6EE" stroke="#C9A961" stroke-width="6"/>
+  <circle cx="600" cy="500" r="360" fill="none" stroke="#C9A961" stroke-width="1" stroke-dasharray="4 8"/>
+  <!-- Center rice mound -->
+  <circle cx="600" cy="500" r="100" fill="#F5EFE6" stroke="#D4C8A8" stroke-width="2"/>
+  <!-- Surrounding bowls with different curries -->
+  <circle cx="600" cy="280" r="85" fill="#E8B547" stroke="#A88842" stroke-width="3"/>
+  <circle cx="820" cy="500" r="85" fill="#7A2B2B" stroke="#5C1F1F" stroke-width="3"/>
+  <ellipse cx="815" cy="490" rx="20" ry="6" fill="#C9A961" opacity="0.5"/>
+  <circle cx="600" cy="720" r="85" fill="#6B7F4F" stroke="#4F5F3A" stroke-width="3"/>
+  <circle cx="380" cy="500" r="85" fill="#5C2818" stroke="#3D1410" stroke-width="3"/>
+  <!-- Smaller diagonal bowls -->
+  <circle cx="425" cy="325" r="55" fill="#FAF6EE" stroke="#C9A961" stroke-width="2"/>
+  <circle cx="425" cy="325" r="25" fill="#E8763A"/>
+  <circle cx="775" cy="325" r="55" fill="#FAF6EE" stroke="#C9A961" stroke-width="2"/>
+  <circle cx="775" cy="325" r="25" fill="#6B7F4F"/>
+  <circle cx="425" cy="675" r="55" fill="#FAF6EE" stroke="#C9A961" stroke-width="2"/>
+  <circle cx="425" cy="675" r="25" fill="#C9A961"/>
+  <circle cx="775" cy="675" r="55" fill="#FAF6EE" stroke="#C9A961" stroke-width="2"/>
+  <circle cx="775" cy="675" r="25" fill="#7A2B2B"/>
+  <text x="600" y="855" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="22" fill="#FAF6EE" opacity="0.7">replace with your photo</text>
+</svg>

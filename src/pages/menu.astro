@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MenuCategory from '../components/MenuCategory.astro';
+import Ornament from '../components/Ornament.astro';
+import { menu } from '../data/menu.js';
+---
+<BaseLayout title="Menu" description="The full Bites by Kanchan catering menu — biryanis, butter chicken, chaats, paneer dishes, braised goat, dals, and house chutneys. Half and full trays for 10–20 guests.">
+
+  <section class="menu-hero">
+    <div class="container container--sm" style="text-align: center;">
+      <span class="eyebrow rise rise-1">The Menu</span>
+      <h1 class="rise rise-2">A handwritten <em>spread.</em></h1>
+      <p class="lede rise rise-3" style="margin-top: 1.5rem;">
+        Half trays serve about 10–12 people, full trays about 18–20.
+        Mix categories freely — I'll help you build the right combination for your group.
+      </p>
+      <div class="divider rise rise-4" style="max-width: 240px; margin: 2.5rem auto 0;">
+        <Ornament type="divider" size={20} color="var(--gold)" />
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top: 0;">
+    <div class="container">
+      <div class="menu-grid">
+        {menu.map(cat => (
+          <MenuCategory title={cat.title} note={cat.note} items={cat.items} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Notes / fine print -->
+  <section class="bg-deep tight">
+    <div class="container container--sm">
+      <h3 style="text-align: center; margin-bottom: 2rem; color: var(--burgundy);">Good to know</h3>
+      <div class="notes">
+        <div class="note">
+          <strong>Tray sizes</strong>
+          <p>Half: 10–12 people · Full: 18–20 people</p>
+        </div>
+        <div class="note">
+          <strong>Notice period</strong>
+          <p>48 hours recommended. For larger orders, more lead time means more love in the kitchen.</p>
+        </div>
+        <div class="note">
+          <strong>Pickup or delivery</strong>
+          <p>Pickup is the default. Delivery available across NYC upon request.</p>
+        </div>
+        <div class="note">
+          <strong>Custom menus</strong>
+          <p>Don't see what you need? Tell me your event and I'll build something around it.</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="/contact" class="btn btn--primary">Place an inquiry →</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .menu-hero {
+    padding-block: clamp(3rem, 6vw, 5rem) clamp(2rem, 4vw, 3rem);
+  }
+  .menu-hero h1 em { font-style: italic; color: var(--burgundy); font-weight: 300; }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .notes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .note {
+    padding: 1.5rem;
+    background: var(--cream);
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+  }
+  .note strong {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    margin-bottom: 0.5rem;
+  }
+  .note p { font-size: 0.95rem; }
+
+  @media (max-width: 860px) {
+    .menu-grid { grid-template-columns: 1fr; }
+    .notes { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,203 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Ornament from '../components/Ornament.astro';
+---
+<BaseLayout title="Contact" description="Inquire about Bites by Kanchan catering. Reach out for menus, pricing, and tasting bookings — replies within a day.">
+
+  <section class="contact-hero">
+    <div class="container container--sm">
+      <span class="eyebrow rise rise-1">Get in touch</span>
+      <h1 class="rise rise-2">Tell me about <em>your event.</em></h1>
+      <p class="lede rise rise-3" style="margin-top: 1.5rem;">
+        The more you share — date, group size, dietary preferences — the better I can build a menu around it.
+        I reply within a day.
+      </p>
+    </div>
+  </section>
+
+  <section style="padding-top: clamp(1.5rem, 3vw, 2.5rem);">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-grid__form">
+          <ContactForm />
+        </div>
+
+        <aside class="contact-grid__aside">
+          <div class="info-card">
+            <h3>Reach me directly</h3>
+            <hr class="dotted-rule" />
+            <ul class="info-list">
+              <li>
+                <span class="info-list__label">Phone</span>
+                <a href="tel:+13477284030">347-728-4030</a>
+              </li>
+              <li>
+                <span class="info-list__label">Email</span>
+                <a href="mailto:bitesbykanchan@gmail.com">bitesbykanchan@gmail.com</a>
+              </li>
+              <li>
+                <span class="info-list__label">Web</span>
+                <a href="https://bitesbykanchan.com">bitesbykanchan.com</a>
+              </li>
+              <li>
+                <span class="info-list__label">Service area</span>
+                <span>Across New York City</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="info-card info-card--accent">
+            <Ornament type="leaf" size={32} color="var(--gold)" />
+            <h4>Booking ahead?</h4>
+            <p>48 hours notice is recommended for most orders. For weddings and large parties (75+ guests), please reach out 2–3 weeks in advance.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-deep tight">
+    <div class="container container--sm">
+      <header style="text-align: center; margin-bottom: 3rem;">
+        <span class="eyebrow">Frequently asked</span>
+        <h2 style="margin-top: 1rem;">Common questions</h2>
+      </header>
+
+      <div class="faq">
+        <details class="faq__item">
+          <summary>How far in advance should I book?</summary>
+          <p>For standard orders, 48 hours is enough. For larger gatherings (50+ guests) or weddings, please reach out 2–3 weeks ahead so I can plan the kitchen workflow properly.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Do you deliver?</summary>
+          <p>Pickup is the default and free. Delivery is available across NYC for an additional fee — just mention it in your inquiry and I'll quote it with the menu.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Can you accommodate dietary restrictions?</summary>
+          <p>Absolutely. The menu has plenty of vegetarian options and most dishes can be adjusted for spice level. For allergies (nuts, dairy, gluten), please mention them up front so I can plan around them.</p>
+        </details>
+        <details class="faq__item">
+          <summary>What's the minimum order?</summary>
+          <p>I generally cater for 10 guests and up. For smaller intimate dinners, reach out anyway — happy to discuss.</p>
+        </details>
+        <details class="faq__item">
+          <summary>How does payment work?</summary>
+          <p>A 50% deposit confirms your booking, with the balance due on the day of pickup or delivery. I accept Zelle, Venmo, and bank transfer.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .contact-hero {
+    padding-block: clamp(3rem, 6vw, 5rem) clamp(1rem, 2vw, 2rem);
+  }
+  .contact-hero h1 em { font-style: italic; color: var(--burgundy); font-weight: 300; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: start;
+  }
+
+  .contact-grid__aside {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: sticky;
+    top: 100px;
+  }
+
+  .info-card {
+    padding: 2rem;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+  }
+  .info-card h3 {
+    font-size: 1.35rem;
+    color: var(--burgundy);
+    margin-bottom: 1rem;
+  }
+  .info-card hr { margin-bottom: 1.5rem; }
+
+  .info-card--accent {
+    background: var(--cream-warm);
+    border-left: 4px solid var(--gold);
+  }
+  .info-card--accent svg { margin-bottom: 1rem; }
+  .info-card--accent h4 {
+    color: var(--burgundy);
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .info-card--accent p { font-size: 0.95rem; }
+
+  .info-list { display: flex; flex-direction: column; gap: 1rem; }
+  .info-list li { display: flex; flex-direction: column; gap: 0.25rem; }
+  .info-list__label {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .info-list a {
+    color: var(--ink);
+    border-bottom: 1px dotted var(--line-strong);
+    width: fit-content;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .info-list a:hover { color: var(--burgundy); border-color: var(--burgundy); }
+
+  /* FAQ */
+  .faq {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .faq__item {
+    border-top: 1px dotted var(--line-strong);
+    padding: 1.25rem 0;
+  }
+  .faq__item:last-child { border-bottom: 1px dotted var(--line-strong); }
+  .faq__item summary {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--ink);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: color 0.2s;
+  }
+  .faq__item summary::-webkit-details-marker { display: none; }
+  .faq__item summary::after {
+    content: "+";
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    color: var(--burgundy);
+    line-height: 1;
+    transition: transform 0.3s;
+  }
+  .faq__item[open] summary::after { transform: rotate(45deg); }
+  .faq__item summary:hover { color: var(--burgundy); }
+  .faq__item p {
+    margin-top: 1rem;
+    line-height: 1.7;
+    max-width: 65ch;
+  }
+
+  @media (max-width: 860px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-grid__aside { position: static; }
+  }
+</style>

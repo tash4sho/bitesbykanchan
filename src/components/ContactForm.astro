@@ -1,0 +1,209 @@
+---
+// Drop-in contact form.
+// Default action is a Formspree endpoint placeholder — sign up free at https://formspree.io
+// and replace the URL below with your own. No backend code required.
+//
+// Alternative free options (all MIT or commercial-friendly):
+//   - Web3Forms  → https://web3forms.com (no signup, just an access key)
+//   - Netlify Forms → add data-netlify="true" if hosting on Netlify
+//   - Formspark → https://formspark.io
+const formAction = 'https://formspree.io/f/YOUR_FORM_ID';
+---
+<form class="cform" action={formAction} method="POST" novalidate>
+  <div class="cform__grid">
+    <label class="cform__field">
+      <span>Your name *</span>
+      <input type="text" name="name" required autocomplete="name" placeholder="Priya Sharma" />
+    </label>
+
+    <label class="cform__field">
+      <span>Email *</span>
+      <input type="email" name="email" required autocomplete="email" placeholder="you@email.com" />
+    </label>
+
+    <label class="cform__field">
+      <span>Phone</span>
+      <input type="tel" name="phone" autocomplete="tel" placeholder="(347) 555-0123" />
+    </label>
+
+    <label class="cform__field">
+      <span>Event date</span>
+      <input type="date" name="event_date" />
+    </label>
+
+    <label class="cform__field cform__field--full">
+      <span>How many guests?</span>
+      <select name="guests">
+        <option value="">Select a range</option>
+        <option>10 – 25</option>
+        <option>25 – 50</option>
+        <option>50 – 75</option>
+        <option>75 – 100</option>
+        <option>More than 100</option>
+      </select>
+    </label>
+
+    <label class="cform__field cform__field--full">
+      <span>Tell me about your event *</span>
+      <textarea name="message" rows="5" required placeholder="Birthday, anniversary, corporate lunch — what kind of dishes are you thinking about?"></textarea>
+    </label>
+  </div>
+
+  <!-- Honeypot field for basic spam protection (hidden from users) -->
+  <input type="text" name="_gotcha" class="cform__honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+  <div class="cform__actions">
+    <button type="submit" class="btn btn--primary">Send inquiry →</button>
+    <p class="cform__note">I'll reply within a day. For urgent requests, call <a href="tel:+13477284030">347-728-4030</a>.</p>
+  </div>
+
+  <div class="cform__status" role="status" aria-live="polite"></div>
+</form>
+
+<style>
+  .cform {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .cform__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  .cform__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .cform__field--full { grid-column: 1 / -1; }
+  .cform__field span {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .cform input,
+  .cform select,
+  .cform textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: var(--cream);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--ink);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .cform input:focus,
+  .cform select:focus,
+  .cform textarea:focus {
+    outline: none;
+    border-color: var(--burgundy);
+    background: white;
+  }
+  .cform input:invalid:not(:placeholder-shown),
+  .cform textarea:invalid:not(:placeholder-shown) {
+    border-color: #b14747;
+  }
+  .cform textarea { resize: vertical; min-height: 120px; }
+
+  .cform__honey {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+
+  .cform__actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .cform__note {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    font-family: var(--font-display);
+  }
+  .cform__note a { color: var(--burgundy); border-bottom: 1px dotted var(--burgundy); }
+
+  .cform__status {
+    font-size: 0.95rem;
+    padding: 0;
+    transition: padding 0.2s;
+  }
+  .cform__status.is-success {
+    padding: 1rem 1.25rem;
+    background: rgba(107, 127, 79, 0.12);
+    border: 1px solid var(--sage);
+    border-radius: var(--radius);
+    color: var(--sage);
+  }
+  .cform__status.is-error {
+    padding: 1rem 1.25rem;
+    background: rgba(122, 43, 43, 0.08);
+    border: 1px solid var(--burgundy);
+    border-radius: var(--radius);
+    color: var(--burgundy);
+  }
+
+  @media (max-width: 600px) {
+    .cform__grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('.cform');
+  const status = document.querySelector<HTMLDivElement>('.cform__status');
+  const button = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+
+  form?.addEventListener('submit', async (e) => {
+    if (!form.action || form.action.includes('YOUR_FORM_ID')) {
+      // No real endpoint configured — graceful fallback so the demo still works.
+      e.preventDefault();
+      if (status) {
+        status.className = 'cform__status is-success';
+        status.textContent = "Thanks! Your inquiry would be sent — just configure your form endpoint in src/components/ContactForm.astro to go live.";
+      }
+      form.reset();
+      return;
+    }
+
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+
+    if (button) { button.disabled = true; button.textContent = 'Sending…'; }
+    if (status) { status.className = 'cform__status'; status.textContent = ''; }
+
+    try {
+      const data = new FormData(form);
+      const res = await fetch(form.action, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: data,
+      });
+
+      if (res.ok) {
+        if (status) {
+          status.className = 'cform__status is-success';
+          status.textContent = "Got it — thanks for reaching out. I'll be in touch within a day.";
+        }
+        form.reset();
+      } else {
+        throw new Error('Network response was not ok');
+      }
+    } catch {
+      if (status) {
+        status.className = 'cform__status is-error';
+        status.textContent = "Something went wrong. Please email bitesbykanchan@gmail.com directly.";
+      }
+    } finally {
+      if (button) { button.disabled = false; button.textContent = 'Send inquiry →'; }
+    }
+  });
+</script>

@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Ornament from '../components/Ornament.astro';
+---
+<BaseLayout title="About" description="The story behind Bites by Kanchan — a Queens-based catering kitchen rooted in family recipes and slow Indian cooking.">
+
+  <section class="about-hero">
+    <div class="container container--sm">
+      <span class="eyebrow rise rise-1">About</span>
+      <h1 class="rise rise-2">A kitchen built on <em>memory.</em></h1>
+      <p class="lede rise rise-3" style="margin-top: 1.5rem;">
+        Bites by Kanchan is a small-batch Indian catering kitchen out of New York —
+        cooking the food I grew up with, for the people in your life.
+      </p>
+    </div>
+  </section>
+
+  <section class="story tight">
+    <div class="container container--sm">
+      <div class="story__body">
+        <p>
+          I'm Kanchan. Long before this was a business, it was just dinner — for cousins crowded around
+          a table on a Sunday, for friends who'd shown up unannounced, for the kid down the hall who'd
+          smelled the biryani and politely knocked.
+        </p>
+        <p>
+          The recipes here come from my mother and her mother before her. They aren't fussy.
+          They're built from <strong>whole spices, patience, and the right cuts of meat</strong> —
+          the way home cooking is supposed to taste before restaurants got hold of it.
+        </p>
+
+        <figure class="pullquote">
+          <Ornament type="divider" size={18} color="var(--gold)" />
+          <blockquote>
+            Catering, to me, isn't a transaction.
+            It's feeding the people you love — and now, the people <em>you</em> love.
+          </blockquote>
+        </figure>
+
+        <p>
+          When you order from Bites by Kanchan, you're not picking from an industrial menu. We talk
+          about your event first. How many people? Vegetarians? Anyone who can't take heat?
+          Then I plan the trays around that — biryani if you want a centerpiece, chaat if you want
+          something interactive, dal and roti if you want comfort.
+        </p>
+        <p>
+          Everything is cooked to order. Nothing sits in a steam tray for three days. The chutneys are
+          made the morning of, the meats are marinated the night before, and the rice is layered
+          right before it goes out the door.
+        </p>
+
+        <h3 class="story__sub">What you get when you book</h3>
+        <ul class="story__list">
+          <li><strong>A real conversation.</strong> Menu suggestions based on your group, not a generic checklist.</li>
+          <li><strong>Honest portions.</strong> Half trays for 10–12, full trays for 18–20 — calibrated so you don't overbuy.</li>
+          <li><strong>Care in the details.</strong> Chutneys made fresh, spices toasted that day, biryani layered by hand.</li>
+          <li><strong>Flexibility.</strong> Pickup is standard, delivery is on the table. Custom menus, also on the table.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-burgundy tight">
+    <div class="container container--sm" style="text-align: center;">
+      <span class="eyebrow">Now serving</span>
+      <h2 style="margin: 1rem 0 1.5rem;">Birthdays · weddings · holidays<br/>corporate lunches · quiet Sundays.</h2>
+      <p class="lede">10 to 100 guests. Across NYC.</p>
+      <div style="margin-top: 2rem;">
+        <a href="/contact" class="btn btn--gold">Plan your event</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .about-hero {
+    padding-block: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .about-hero h1 em { font-style: italic; color: var(--burgundy); font-weight: 300; }
+
+  .story__body p {
+    font-size: 1.075rem;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+  .story__body p:first-child::first-letter {
+    font-family: var(--font-display);
+    font-size: 4.25rem;
+    font-weight: 400;
+    float: left;
+    line-height: 0.9;
+    margin: 0.3rem 0.7rem -0.2rem 0;
+    color: var(--burgundy);
+    font-style: italic;
+  }
+
+  .pullquote {
+    margin: 3rem 0;
+    padding: 2rem 0;
+    text-align: center;
+    border-top: 1px dotted var(--line-strong);
+    border-bottom: 1px dotted var(--line-strong);
+  }
+  .pullquote svg { margin: 0 auto 1.5rem; display: block; }
+  .pullquote blockquote {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.4;
+    color: var(--ink);
+    max-width: 28ch;
+    margin: 0 auto;
+  }
+  .pullquote em { font-weight: 400; color: var(--burgundy); }
+
+  .story__sub {
+    margin: 3rem 0 1.5rem;
+    color: var(--burgundy);
+    font-style: italic;
+  }
+  .story__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .story__list li {
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+  .story__list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.65rem;
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+</style>
