@@ -39,18 +39,18 @@ export const photos = [
     caption: 'Butter chicken, the way grandma made it.',
   },
   {
-    src: '/images/slideshow/placeholder-4.svg',
-    alt: 'Full thali spread with dal, paneer, rice, and roti',
-    caption: 'A full thali for a Sunday gathering.',
+    src: '/images/slideshow/wings.jpg',
+    alt: 'Wings',
+    caption: 'A full basket of wings for a Sunday gathering.',
   },
   {
-    src: '/images/slideshow/placeholder-5.svg',
+    src: '/images/slideshow/tandoori.jpg',
     alt: 'Tandoori chicken on a bed of sliced onions and lemon',
     caption: 'Tandoori, charred and resting.',
   },
   {
-    src: '/images/slideshow/placeholder-6.svg',
-    alt: 'Fresh chutneys in small bowls with cilantro and mint',
-    caption: 'Chutneys, made the morning of.',
+    src: '/images/slideshow/chaats.jpg',
+    alt: 'Delicious Chaats',
+    caption: 'Chaats, made the morning of.',
   },
 ];
