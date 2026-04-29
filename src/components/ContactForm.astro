@@ -1,12 +1,5 @@
 ---
-// Drop-in contact form.
-// Default action is a Formspree endpoint placeholder — sign up free at https://formspree.io
-// and replace the URL below with your own. No backend code required.
-//
-// Alternative free options (all MIT or commercial-friendly):
-//   - Web3Forms  → https://web3forms.com (no signup, just an access key)
-//   - Netlify Forms → add data-netlify="true" if hosting on Netlify
-//   - Formspark → https://formspark.io
+// Drop-in contact form using Web3Forms (https://web3forms.com)
 const formAction = 'https://api.web3forms.com/submit';
 ---
 <form class="cform" action={formAction} method="POST" novalidate>
@@ -166,16 +159,6 @@ const formAction = 'https://api.web3forms.com/submit';
   const button = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
 
   form?.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  
-      if (status) {
-        status.className = 'cform__status is-success';
-        status.textContent = "Thanks! Your inquiry would be sent — just configure your form endpoint in src/components/ContactForm.astro to go live.";
-      }
-      form.reset();
-      return;
-    }
-
     e.preventDefault();
     if (!form.checkValidity()) { form.reportValidity(); return; }
 
