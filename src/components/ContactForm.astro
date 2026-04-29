@@ -7,9 +7,12 @@
 //   - Web3Forms  → https://web3forms.com (no signup, just an access key)
 //   - Netlify Forms → add data-netlify="true" if hosting on Netlify
 //   - Formspark → https://formspark.io
-const formAction = 'https://formspree.io/f/YOUR_FORM_ID';
+const formAction = 'https://api.web3forms.com/submit';
 ---
 <form class="cform" action={formAction} method="POST" novalidate>
+  <input type="hidden" name="access_key" value="bfcc5988-d8d4-47c7-98e8-b0899a962ad5" />
+  <input type="hidden" name="subject" value="New catering inquiry — Bites by Kanchan" />
+  <input type="hidden" name="from_name" value="Bites by Kanchan website" />
   <div class="cform__grid">
     <label class="cform__field">
       <span>Your name *</span>
