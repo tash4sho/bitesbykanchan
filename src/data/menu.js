@@ -5,17 +5,17 @@ export const menu = [
   {
     slug: 'street-food',
     title: 'Street Food & Appetizers',
-    note: 'Perfect for gatherings & events',
     items: [
-      { name: 'Pani Puri Kit (Signature)', detail: 'Serves 10–12', half: '$100', halfLabel: 'Classic', full: '$120', fullLabel: 'Premium' },
+      { name: 'Pani Puri Kit (Signature)', detail: 'Serves 10–12 · Classic 1 flavor / Premium 2 flavors', half: '$100', halfLabel: 'Classic', full: '$120', fullLabel: 'Premium' },
       { name: 'Bhel Puri', half: '$70', full: '$130' },
       { name: 'Aloo Tikki Chaat', half: '$75', full: '$140' },
-      { name: 'Samosa Chaat', half: '$75', full: '$140' },
+      { name: 'Samosa (Plain)', half: '$75', full: '$140' },
+      { name: 'Samosa Chaat (with Chole)', half: '$90', full: '$160' },
       { name: 'Kachori with Aloo Sabzi', half: '$90', full: '$160' },
       { name: 'Pakora Mix', half: '$75', full: '$140' },
       { name: 'Pav Bhaji (with Pav)', half: '$90', full: '$140' },
       { name: 'Pav Bhaji (without Pav)', half: '$80', full: '$140' },
-      { name: 'Vada Pav', detail: '$5 each · 25 pcs $100', half: '', full: '' },
+      { name: 'Vada Pav', detail: '25 pcs $100 · 50 pcs $200', half: '', full: '' },
     ],
   },
   {
@@ -23,12 +23,12 @@ export const menu = [
     title: 'Rice & Biryani',
     items: [
       { name: 'Chicken Biryani', half: '$75', full: '$140' },
-      { name: 'Goat Biryani', half: '—', full: '$220' },
+      { name: 'Goat Biryani', half: '$110', full: '$220' },
       { name: 'Vegetable Biryani', half: '$70', full: '$120' },
       { name: 'Chicken Yakhni Pulao', half: '$85', full: '$150' },
       { name: 'Goat Yakhni Pulao', half: '$120', full: '$200' },
       { name: 'Matar Pulao', half: '$60', full: '$105' },
-      { name: 'Plain Pulao', half: '$55', full: '$95' },
+      { name: 'Jeera Rice', half: '$55', full: '$95' },
     ],
   },
   {
@@ -36,13 +36,14 @@ export const menu = [
     title: 'Signature Chicken',
     note: 'Boneless option available for all chicken dishes except traditional curry',
     items: [
-      { name: 'Butter Chicken (Boneless)', half: '$95', full: '$170' },
-      { name: 'Chicken Curry (Bone-In)', half: '$85', full: '$150' },
-      { name: 'Chicken Korma (Boneless)', half: '$95', full: '$165' },
-      { name: 'Chicken Kadai (Boneless avail.)', half: '$90', full: '$160' },
-      { name: 'Chili Chicken (Boneless)', half: '$90', full: '$160' },
+      { name: 'Butter Chicken', half: '$95', full: '$170' },
+      { name: 'Chicken Curry', half: '$85', full: '$150' },
+      { name: 'Chicken Korma', half: '$95', full: '$165' },
+      { name: 'Chicken Kadai', half: '$90', full: '$160' },
+      { name: 'Chili Chicken', half: '$90', full: '$160' },
       { name: 'Chili Wings', half: '$85', full: '$150' },
       { name: 'Tandoori Chicken', half: '$85', full: '$150' },
+      { name: 'Chicken Roast', half: '$95', full: '$170' },
     ],
   },
   {
@@ -59,11 +60,11 @@ export const menu = [
     title: 'Vegetarian Classics',
     items: [
       { name: 'Paneer Makhni', half: '$90', full: '$160' },
-      { name: 'Paneer Bhurji', half: '$85', full: '$150' },
-      { name: 'Matar Methi Paneer', half: '$85', full: '$150' },
-      { name: 'Mixed Vegetable Curry', half: '$65', full: '$110' },
+      { name: 'Palak Paneer', half: '$85', full: '$150' },
+      { name: 'Matar Methi Malai Paneer', half: '$85', full: '$150' },
+      { name: 'Mixed Vegetable Sabzi', half: '$65', full: '$110' },
       { name: 'Aloo Gobi', half: '$70', full: '$120' },
-      { name: 'Bhindi', half: '$75', full: '$130' },
+      { name: 'Bhindi Masala', half: '$75', full: '$130' },
     ],
   },
   {
@@ -83,29 +84,41 @@ export const menu = [
     ],
   },
   {
-    slug: 'roti',
-    title: 'Roti & Accompaniments',
+    slug: 'breads',
+    title: 'Breads & Accompaniments',
     items: [
-      { name: 'Roti', detail: '$2 each · 25 pcs $50 · 50 pcs $95', half: '', full: '' },
+      { name: 'Roti', detail: '25 pcs $50 · 50 pcs $95', half: '', full: '' },
+      { name: 'Puri', detail: '25 pcs $28 · 50 pcs $55', half: '', full: '' },
     ],
   },
   {
     slug: 'sides',
     title: 'Fresh Sides',
     items: [
-      { name: 'Cucumber Raita', half: '$35', halfLabel: 'Half', full: '$60', fullLabel: 'Full' },
-      { name: 'Kachumber Salad', detail: 'cucumber, tomato, onion, lemon', half: '$40', halfLabel: 'Half', full: '$70', fullLabel: 'Full' },
+      { name: 'Cucumber or Mixed Raita', half: '$35', halfLabel: 'Half', full: '$60', fullLabel: 'Full' },
+      { name: 'Kachumber Salad', half: '$40', halfLabel: 'Half', full: '$70', fullLabel: 'Full' },
     ],
   },
   {
     slug: 'chutneys',
     title: 'House Chutneys',
     items: [
-      { name: 'Cilantro Mint Chutney', detail: '16 oz · 32 oz', half: '$15', full: '$25' },
-      { name: 'Tamarind Chutney',      detail: '16 oz · 32 oz', half: '$15', full: '$25' },
+      { name: 'Cilantro Mint Chutney', half: '$15', halfLabel: '16 oz', full: '$25', fullLabel: '32 oz' },
+      { name: 'Tamarind Chutney',      half: '$15', halfLabel: '16 oz', full: '$25', fullLabel: '32 oz' },
+    ],
+  },
+  {
+    slug: 'sweets',
+    title: 'Sweet Bites',
+    note: 'Other desserts available upon request · Gluten-free & vegan options available upon request',
+    items: [
+      { name: 'Kheer (Classic)', half: '$50', full: '$90' },
+      { name: 'Kesar Kheer', half: '$60', full: '$100' },
+      { name: 'Rose Kheer', half: '$60', full: '$100' },
+      { name: 'Mango Tiramisu (Eggless)', half: '$70', full: '$120' },
     ],
   },
 ];
 
 // Categories highlighted on the home page
-export const featuredSlugs = ['street-food', 'signature-chicken', 'braised-goat', 'vegetarian'];
+export const featuredSlugs = ['street-food', 'signature-chicken', 'braised-goat', 'sweets'];
