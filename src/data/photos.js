@@ -5,7 +5,7 @@
 export const photos = [
   { src: '/images/slideshow/first.png' },
  
-  { src: '/images/slideshow/display1.png' }
+  { src: '/images/slideshow/display1.png' },
  
   { src: '/images/slideshow/panipuri2.png' },
   { src: '/images/slideshow/streetsnack.png' },
