@@ -166,9 +166,8 @@ const formAction = 'https://api.web3forms.com/submit';
   const button = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
 
   form?.addEventListener('submit', async (e) => {
-    if (!form.action || form.action.includes('YOUR_FORM_ID')) {
-      // No real endpoint configured — graceful fallback so the demo still works.
-      e.preventDefault();
+  e.preventDefault();
+  
       if (status) {
         status.className = 'cform__status is-success';
         status.textContent = "Thanks! Your inquiry would be sent — just configure your form endpoint in src/components/ContactForm.astro to go live.";
