@@ -24,33 +24,38 @@
 
 export const photos = [
   {
-    src: '/images/slideshow/biryani.jpg',
-    alt: 'Hand-layered chicken biryani in a brass serving dish',
-    caption: 'Slow-layered biryani, garnished by hand.',
+    src: '/images/slideshow/trays.png',
+    alt: '',
+    caption: '',
   },
   {
-    src: '/images/slideshow/placeholder-2.svg',
-    alt: 'Pani puri kit with crispy shells and tamarind water',
-    caption: 'Pani puri assembled at the table.',
+    src: '/images/slideshow/panipuri2.png',
+    alt: '',
+    caption: '',
   },
   {
-    src: '/images/slideshow/butterchicken.jpg',
-    alt: 'Butter chicken in a copper karahi with fresh cilantro',
-    caption: 'Butter chicken, the way grandma made it.',
+    src: '/images/slideshow/streetsnack.png',
+    alt: ',
+    caption: '',
   },
   {
-    src: '/images/slideshow/wings.jpg',
-    alt: 'Wings',
-    caption: 'A full basket of wings for a Sunday gathering.',
+    src: '/images/slideshow/shrimps.png',
+    alt: '',
+    caption: '',
   },
   {
-    src: '/images/slideshow/tandoori.jpg',
-    alt: 'Tandoori chicken on a bed of sliced onions and lemon',
-    caption: 'Tandoori, charred and resting.',
+    src: '/images/slideshow/samosa.png',
+    alt: '',
+    caption: '',
   },
   {
-    src: '/images/slideshow/chaats.jpg',
-    alt: 'Delicious Chaats',
-    caption: 'Chaats, made the morning of.',
+    src: '/images/slideshow/'display1,
+    alt: '',
+    caption: '',
+  },
+  {
+    src: '/images/slideshow/'panipuri.png,
+    alt: '',
+    caption: '',
   },
 ];
