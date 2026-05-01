@@ -37,5 +37,5 @@ export const photos = [
   { src: '/images/slideshow/32.png' },
   { src: '/images/slideshow/33.png' }, 
   { src: '/images/slideshow/34.png' }, 
-  { src: '/images/slideshow/35.png' },
+  { src: '/images/slideshow/35.jpeg' },
 ];
