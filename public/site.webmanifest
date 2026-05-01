@@ -1,0 +1,21 @@
+{
+  "name": "Bites by Kanchan",
+  "short_name": "Bites by Kanchan",
+  "description": "Authentic Indian catering for 10–100 guests. From my kitchen to your table.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#F5EDD8",
+  "theme_color": "#8B1A1A",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

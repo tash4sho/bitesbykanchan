@@ -1,0 +1,176 @@
+---
+// No props needed — this is site-wide structured data
+---
+
+<!-- ─── Local Business + Catering Service Schema ──── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["FoodEstablishment", "LocalBusiness", "CateringService"],
+      "@id": "https://www.bitesbykanchan.com/#business",
+      "name": "Bites by Kanchan",
+      "alternateName": "Bites by Kanchan Catering",
+      "description": "Authentic Indian catering service offering curated setups for 10–100 guests. From street food and biryani to goat specialties, vegetarian classics, and more. From my kitchen to your table.",
+      "url": "https://www.bitesbykanchan.com",
+      "telephone": "+13477284030",
+      "email": "bitesbykanchan@gmail.com",
+      "image": "https://www.bitesbykanchan.com/og-image.jpg",
+      "logo": "https://www.bitesbykanchan.com/logo.png",
+      "priceRange": "$$",
+      "currenciesAccepted": "USD",
+      "paymentAccepted": "Cash, Credit Card",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "New York",
+        "addressRegion": "NY",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "40.7128",
+        "longitude": "-74.0060"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "New York Metro Area"
+      },
+      "servesCuisine": ["Indian", "South Asian", "Vegetarian", "Halal-friendly"],
+      "hasMenu": "https://www.bitesbykanchan.com/menu",
+      "menu": "https://www.bitesbykanchan.com/menu",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"
+          ],
+          "opens": "09:00",
+          "closes": "21:00"
+        }
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+13477284030",
+        "contactType": "customer service",
+        "email": "bitesbykanchan@gmail.com",
+        "availableLanguage": ["English", "Hindi"]
+      },
+      "sameAs": [
+        "https://www.instagram.com/bitesbykanchan",
+        "https://www.facebook.com/bitesbykanchan"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Catering Menu",
+        "itemListElement": [
+          {
+            "@type": "OfferCatalog",
+            "name": "Street Food & Appetizers",
+            "description": "Perfect for gatherings and events. Includes Pani Puri Kit, Bhel Puri, Aloo Tikki Chaat, Samosa Chaat, and more."
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Rice & Biryani",
+            "description": "Chicken Biryani, Goat Biryani, Vegetable Biryani, Chicken Yakhni Pulao, and more."
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Signature Chicken",
+            "description": "Butter Chicken, Chicken Korma, Chicken Kadai, Chili Wings, Tandoori Chicken, and more."
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Braised Goat Specialties",
+            "description": "Goat Curry, Chana Dal Gosht, Also Gosht."
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Vegetarian Classics",
+            "description": "Paneer Makhni, Palak Paneer, Matar Methi Paneer, Mixed Vegetable Curry, Aloo Gobi, Bhindi."
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Lentils & Comforts",
+            "description": "Dal Makhni, Yellow Dal, Channa Masala."
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Seafood",
+            "description": "Tandoori Salmon."
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Roti & Accompaniments",
+            "description": "Roti, Cucumber Raita, Kachumber Salad, House Chutneys (Cilantro, Tamarind)."
+          }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.bitesbykanchan.com/#website",
+      "url": "https://www.bitesbykanchan.com",
+      "name": "Bites by Kanchan",
+      "description": "Authentic Indian catering for 10–100 guests. From my kitchen to your table.",
+      "publisher": {
+        "@id": "https://www.bitesbykanchan.com/#business"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.bitesbykanchan.com/menu?search={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.bitesbykanchan.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many guests can Bites by Kanchan cater for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bites by Kanchan caters for events ranging from 10 to 100 guests with curated setups available."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How far in advance do I need to place a catering order?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We recommend placing your order at least 48 hours in advance to ensure the best preparation and freshness."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is delivery available?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pickup is available. Delivery is also available upon request. Please contact us at 347-728-4030 to arrange."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Bites by Kanchan offer vegetarian options?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! We have an extensive Vegetarian Classics menu including Paneer Makhni, Palak Paneer, Aloo Gobi, Bhindi, and more."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What cuisines does Bites by Kanchan serve?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We specialize in authentic Indian cuisine including street food, biryani, goat specialties, chicken dishes, vegetarian classics, lentils, seafood, and fresh accompaniments."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>

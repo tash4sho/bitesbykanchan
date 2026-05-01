@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block irrelevant crawl paths
+Disallow: /api/
+Disallow: /_astro/
+
+Sitemap: https://www.bitesbykanchan.com/sitemap-index.xml
